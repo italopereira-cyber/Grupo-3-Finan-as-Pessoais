@@ -1,52 +1,54 @@
-
-import java.util.List;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
-public class Conta {
-
+public class Conta extends Transacao {
     private String nome;
-    private int saldo_Inicial;
-    private List<Transacao> transacoes = new ArrayList<>();
+    private double saldo_inicial = 1000;
+    private List<Transacao> MatrizDinamica = new ArrayList<>();
 
-    public Conta(String nome, int saldo_Inicial) {
-        this.nome = nome;
-        this.saldo_Inicial = saldo_Inicial;
-    }
+//"Id" int | "data" LocalDate | "saldo" double | "descrisao" String | "Categoria" String --> filtro de topicos da descrição?
 
-    public List<Transacao> getTransacoes() {
-        return this.transacoes;
-    }
-
-    public void adicionarTransacao(Transacao transacao) {
-        transacoes.add(transacao);
-    }
-
-    public double getSaldoAtual() {
-        double saldo = saldo_Inicial;
-        int i = 0;
-
-        while (i < transacoes.size()) {
-
-            Transacao transacao = transacoes.get(i);
-
-            if (transacao.getTipo().equals("Entrada")) {
-                saldo += transacao.getValor();
-            }
-            else if (transacao.getTipo().equals("Saida")) {
-                saldo -= transacao.getValor();
-            }
-
-            i++;
-        }
-
-        return saldo;
-    }
-
-    public boolean saldo_Suficiente(double valor) {
-        return getSaldoAtual() >= valor;
-    }
-
-    public String getNome() {
-        return nome;
-    }
+public Conta(int id, LocalDate data, double saldo_transacao,String descricao, String categoria){
+    super(id,data,saldo_transacao,descricao,categoria);
 }
+
+public void RemoverLinhaInteira(int linhaEspecifica){
+    MatrizDinamica.remove(linhaEspecifica);
+}
+
+public void AdicionarLinha(Transacao t){
+    MatrizDinamica.add(t);
+}
+
+public void MostrarLinha(int linha){
+    Transacao o =  MatrizDinamica.get(linha);
+    System.out.println(o.getId());
+    System.out.println(o.getData());
+    System.out.println(o.getValor());
+    System.out.println(o.getDescricao());
+    System.out.println(o.getCategoria());
+}
+
+protected double getSaldoInicial(){
+    return saldo_inicial;
+}
+
+protected String getNome(){
+    return nome;
+}
+
+protected Transacao AcessoArray(int index){
+    return MatrizDinamica.get(index);
+}
+
+@Override
+public String getTipo(){
+    return "ainda vou fazer";
+}
+
+@Override 
+public void aplicar(Conta Conta){
+    // ainda a termianr esse aqui
+}}
+       
