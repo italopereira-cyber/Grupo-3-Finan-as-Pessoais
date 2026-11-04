@@ -1,41 +1,39 @@
 
 import java.time.LocalDate;
-
 public abstract class Transacao {
 
     private int id;
     private LocalDate data;
-    private double valor;
+    private double valor_transacao;
     private String descricao;
     private String categoria;
 
-    public Transacao(int id, LocalDate data, double valor,
+    protected Transacao(int id, LocalDate data, double valor_transacao,
                      String descricao, String categoria) {
-
         this.id = id;
         this.data = data;
-        this.valor = valor;
+        this.valor_transacao = valor_transacao;
         this.descricao = descricao;
         this.categoria = categoria;
     }
 
-    public int getId() {
+     protected int getId() {
         return id;
     }
 
-    public LocalDate getData() {
+     protected LocalDate getData() {
         return data;
     }
 
-    public double getValor() {
-        return valor;
+     protected double getValor() {
+        return valor_transacao;
     }
 
-    public String getDescricao() {
+    protected String getDescricao() {
         return descricao;
     }
 
-    public String getCategoria() {
+     protected String getCategoria() {
         return categoria;
     }
 
