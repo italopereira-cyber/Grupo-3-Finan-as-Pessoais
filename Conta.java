@@ -1,52 +1,40 @@
-
-import java.util.List;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Conta {
-
     private String nome;
-    private int saldo_Inicial;
-    private List<Transacao> transacoes = new ArrayList<>();
+    private double saldo_inicial = 1000;
+    private List<Transacao> MatrizDinamica = new ArrayList<>();
 
-    public Conta(String nome, int saldo_Inicial) {
-        this.nome = nome;
-        this.saldo_Inicial = saldo_Inicial;
-    }
+//"Id" int | "data" LocalDate | "saldo" double | "descrisao" String | "Categoria" String --> filtro de topicos da descrição?
 
-    public List<Transacao> getTransacoes() {
-        return this.transacoes;
-    }
+public Conta(String nome,double saldo_inicial){
+    this.nome = nome;
+    this.saldo_inicial = saldo_inicial;
+}
 
-    public void adicionarTransacao(Transacao transacao) {
-        transacoes.add(transacao);
-    }
+public void RemoverLinhaInteira(int linhaEspecifica){
+    MatrizDinamica.remove(linhaEspecifica);
+}
 
-    public double getSaldoAtual() {
-        double saldo = saldo_Inicial;
-        int i = 0;
+public void AdicionarLinha(Transacao t){
+    MatrizDinamica.add(t);
+}
 
-        while (i < transacoes.size()) {
+public void MostrarLinha(int linha){
+    System.out.println(MatrizDinamica.get(linha).getId());
+    System.out.println(MatrizDinamica.get(linha).getData());
+    System.out.println(MatrizDinamica.get(linha).getValor());
+    System.out.println(MatrizDinamica.get(linha).getDescricao());
+    System.out.println(MatrizDinamica.get(linha).getCategoria());
+}
 
-            Transacao transacao = transacoes.get(i);
+protected double getSaldoInicial(){
+    return saldo_inicial;
+}
 
-            if (transacao.getTipo().equals("Entrada")) {
-                saldo += transacao.getValor();
-            }
-            else if (transacao.getTipo().equals("Saida")) {
-                saldo -= transacao.getValor();
-            }
-
-            i++;
-        }
-
-        return saldo;
-    }
-
-    public boolean saldo_Suficiente(double valor) {
-        return getSaldoAtual() >= valor;
-    }
-
-    public String getNome() {
-        return nome;
-    }
+protected String getNome(){
+    return nome;
+}
 }
