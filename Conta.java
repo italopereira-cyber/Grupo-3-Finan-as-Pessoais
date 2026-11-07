@@ -50,11 +50,11 @@ public class Conta {
         transacoes.remove(linhaEspecifica);
     }
 
-public void MostrarLinha(int linha){
-    System.out.println(transacoes.get(linha).getId());
-    System.out.println(transacoes.get(linha).getData());
-    System.out.println(transacoes.get(linha).getValor());
-    System.out.println(transacoes.get(linha).getDescricao());
-    System.out.println(transacoes.get(linha).getCategoria());
-}
+    public void MostrarLinha(int linha){
+        System.out.println(transacoes.get(linha).getId());
+        System.out.println(transacoes.get(linha).getData());
+        System.out.println(transacoes.get(linha).getValor());
+        System.out.println(transacoes.get(linha).getDescricao());
+        System.out.println(transacoes.get(linha).getCategoria());
+    }
 }
