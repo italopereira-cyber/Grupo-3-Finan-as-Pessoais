@@ -46,7 +46,15 @@ public class Conta {
         return getSaldoAtual() >= valor;
     }
 
-    public String getNome() {
-        return nome;
+    public void RemoverLinhaInteira(int linhaEspecifica){
+        transacoes.remove(linhaEspecifica);
     }
+
+public void MostrarLinha(int linha){
+    System.out.println(transacoes.get(linha).getId());
+    System.out.println(transacoes.get(linha).getData());
+    System.out.println(transacoes.get(linha).getValor());
+    System.out.println(transacoes.get(linha).getDescricao());
+    System.out.println(transacoes.get(linha).getCategoria());
+}
 }
